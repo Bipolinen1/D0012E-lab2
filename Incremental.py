@@ -1,13 +1,8 @@
-
-def divAndConc(ls):
-
+def incremental(ls):
     if len(ls) <= 3:
-        return tuple(sorted(ls))
-
-    m = len(ls)//2
-    left = list(divAndConc(ls[:m]))
-    right = list(divAndConc(ls[m:]))
-
+        return sorted(ls)
+    left = incremental(ls[:2])
+    right = incremental(ls[2:])
     li = 0
     ri = 0
     c = 0
@@ -33,4 +28,5 @@ def divAndConc(ls):
             c += 1
 
     return tuple([x, y, z])
+
 
