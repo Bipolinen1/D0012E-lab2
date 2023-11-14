@@ -6,7 +6,7 @@ def divAndConc(ls):
 
     m = len(ls)//2
     left = list(divAndConc(ls[:m]))
-    right = list(divAndConc(ls[m:]))
+    right = list(divAndConc(ls[m:]))#hrj
 
     li = 0
     ri = 0
