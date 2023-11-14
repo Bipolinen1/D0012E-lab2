@@ -2,23 +2,37 @@
 def divAndConc(ls):
 
     if len(ls) <= 3:
-        return tuple(ls.sort())
+        return tuple(sorted(ls))
 
     m = len(ls)//2
-    left = divAndConc(ls[:m])
-    right = divAndConc(ls[m:])
+    left = list(divAndConc(ls[:m]))
+    right = list(divAndConc(ls[m:]))
 
-    if left[0] < right[0]:
-        x = left[0]
-    else:
-        x = right[0]
-    if left[1] < right[1]:
-        y = left[1]
-    else:
-        y = right[1]
-    if left[2] < right[2]:
-        z = left[2]
-    else:
-        z = right[2]
+    li = 0
+    ri = 0
+    c = 0
+
+    while li < len(left) and ri < len(right) and c < 3:
+        if left[li] <= right[ri]:
+            if c == 0:
+                x = left[li]
+            elif c == 1:
+                y = left[li]
+            elif c == 2:
+                z = left[li]
+            li += 1
+            c += 1
+        elif right[ri] <= left[li]:
+            if c == 0:
+                x = right[ri]
+            elif c == 1:
+                y = right[ri]
+            elif c == 2:
+                z = right[ri]
+            ri += 1
+            c += 1
 
     return tuple([x,y,z])
+
+ls = [1,2,8,3,13,15,4,1,2,3,5,3]
+print(divAndConc(ls))
