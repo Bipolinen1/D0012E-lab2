@@ -44,11 +44,11 @@ def maxSumSegment(ls):
     rmax, r_left_sum, r_right_sum, r_tot = maxSumSegment(ls[m:])
 
     if lmax <= 0 and rmax <= 0:
-        return 0,l_tot, l_tot, l_tot + r_tot
-    if lmax > 0 and rmax < 0:
-        return lmax, l_left_sum, lmax + r_tot, l_tot + r_tot
-    if lmax < 0 and rmax > 0:
-        return rmax, rmax + l_tot, r_left_sum, l_tot + r_tot
+        return 0, l_tot, l_tot, l_tot + r_tot
+    if lmax > 0 and rmax <= 0:
+        return lmax, l_left_sum, l_right_sum + r_tot, l_tot + r_tot
+    if lmax <= 0 and rmax > 0:
+        return rmax, r_left_sum + l_tot, r_right_sum, l_tot + r_tot
     if lmax > 0 and rmax > 0:
         if (l_right_sum + r_left_sum) > lmax and (l_right_sum + r_left_sum) > rmax:
             new_max = l_right_sum + r_left_sum
@@ -63,5 +63,5 @@ def maxSumSegment(ls):
     1. Base case: if the length of array is 1 we return the element
     2. Divide list into sub-lists
 """
-ls = [-1,4,-1,3]
-print(maxSumSegment2(ls))
+ls = [-1,-1,-1,-1,-1,4,-1,-1]
+print(maxSumSegment(ls))
