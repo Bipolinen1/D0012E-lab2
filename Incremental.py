@@ -1,8 +1,8 @@
 def incremental(ls):
     if len(ls) <= 3:
         return sorted(ls)
-    left = incremental(ls[:2])
-    right = incremental(ls[2:])
+    left = incremental(ls[:3])
+    right = incremental(ls[3:])
     li = 0
     ri = 0
     c = 0
@@ -30,3 +30,5 @@ def incremental(ls):
     return tuple([x, y, z])
 
 
+ls = [2, 3, 4, 6, 1, 7, 9, 8, 10, 4, 3, 1]
+print(incremental(ls))
